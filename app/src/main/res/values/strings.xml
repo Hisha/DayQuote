@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Overall App related -->
     <string name="app_name">DayQuote</string>
-    <string name="app_version">0.0.1</string>
+    <string name="app_version">0.0.2</string>
+    <string name="app_copyright">Copyright \u00A9 2015 Hisha Tech</string>
+
+    <!-- Splash Activity Related -->
+    <string name="firstline_activity_splash">Day Quote</string>
+    <string name="secondline_activity_splash">Somethings said can be
+        memorable.</string>
+    <string name="url_activity_splash">www.hishatech.com</string>
+
+    <!-- About Activity Related -->
+    <string name="aboutAct">About</string>
+
+    <!-- Update DB Related -->
+    <string name="UpdateDb">Update DB</string>
+    <string name="toast_initial_UpdateDb">Inital load requires internet
+        access!</string>
+    <string name="toast_updateDb">Updating requires internet access!</string>
+    <string name="toast_update_category">Category table updated!</string>
+
 
 </resources>
