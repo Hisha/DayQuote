@@ -52,7 +52,7 @@ public class SplashActivity extends ActionBarActivity {
 
         } else {
 
-            int myTimer = 5000;
+            int myTimer = 3000;
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {

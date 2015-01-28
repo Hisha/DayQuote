@@ -31,4 +31,16 @@ public class table_Quote {
         return insertFailed;
     }
 
+    public static Integer getQuoteCount(Context context) {
+
+        Integer quoteCount = 0;
+        DbAdapter db = new DbAdapter(context);
+        db.open();
+        quoteCount = db.getQuoteCount();
+        db.close();
+
+        return quoteCount;
+
+    }
+
 }

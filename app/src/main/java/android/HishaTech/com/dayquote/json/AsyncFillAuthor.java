@@ -1,7 +1,7 @@
 package android.HishaTech.com.dayquote.json;
 
 import android.HishaTech.com.dayquote.R;
-import android.HishaTech.com.dayquote.db.model.FillTable;
+import android.HishaTech.com.dayquote.db.FillTable;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
