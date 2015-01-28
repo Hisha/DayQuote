@@ -3,6 +3,7 @@ package android.HishaTech.com.dayquote;
 import android.HishaTech.com.dayquote.json.AsyncFillAuthor;
 import android.HishaTech.com.dayquote.json.AsyncFillCategory;
 import android.HishaTech.com.dayquote.json.AsyncFillQuote;
+import android.HishaTech.com.dayquote.json.AsyncFillQuoteCategory;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -48,6 +49,8 @@ public class MainActivity extends ActionBarActivity {
                     afc.execute();
                     AsyncFillQuote afq = new AsyncFillQuote(this);
                     afq.execute();
+                    AsyncFillQuoteCategory afqc = new AsyncFillQuoteCategory(this);
+                    afqc.execute();
 
                 }
                 break;

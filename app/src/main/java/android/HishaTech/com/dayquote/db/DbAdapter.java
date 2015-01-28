@@ -3,6 +3,7 @@ package android.HishaTech.com.dayquote.db;
 import android.HishaTech.com.dayquote.db.model.Author;
 import android.HishaTech.com.dayquote.db.model.Category;
 import android.HishaTech.com.dayquote.db.model.Quote;
+import android.HishaTech.com.dayquote.db.model.QuoteCategory;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -38,6 +39,7 @@ public class DbAdapter {
             db.execSQL(DbConstants.AUTHOR_TABLE_CREATE_STRING);
             db.execSQL(DbConstants.CATEGORY_TABLE_CREATE_STRING);
             db.execSQL(DbConstants.QUOTE_TABLE_CREATE_STRING);
+            db.execSQL(DbConstants.QUOTECATEGORY_TABLE_CREATE_STRING);
 
         }
 
@@ -53,6 +55,8 @@ public class DbAdapter {
                     .TABLE_CATEGORY + "'");
             db.execSQL("DROP TABLE IF EXISTS '" + DbConstants
                     .TABLE_QUOTE + "'");
+            db.execSQL("DROP TABLE IF EXISTS '" + DbConstants
+                    .TABLE_QUOTECATEGORY + "'");
 
             onCreate(db);
         }
@@ -203,26 +207,22 @@ public class DbAdapter {
     public long insertQuote(Quote quote) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(DbConstants.QUOTE_ROWID, quote.getID());
-        initialValues.put(DbConstants.QUOTE_CATEGORYID, quote.getCategoryId());
         initialValues.put(DbConstants.QUOTE_AUTHORID,
                 quote.getAuthorId());
         initialValues.put(DbConstants.QUOTE_QUOTE,
                 quote.getQuote());
-        return mDb.insert(DbConstants.TABLE_CATEGORY, null, initialValues);
+        return mDb.insert(DbConstants.TABLE_QUOTE, null, initialValues);
     }
 
     public Quote getQuoteById(Integer Id) {
         Quote quote = new Quote();
         Cursor mCursor = mDb.query(DbConstants.TABLE_QUOTE,
-                new String[]{DbConstants.QUOTE_CATEGORYID,
-                        DbConstants.QUOTE_AUTHORID, DbConstants.QUOTE_QUOTE},
+                new String[]{DbConstants.QUOTE_AUTHORID, DbConstants.QUOTE_QUOTE},
                 DbConstants.QUOTE_ROWID + " = ?",
                 new String[]{Integer.toString(Id)}, null, null, null);
         if (mCursor.moveToFirst()) {
             do {
                 quote.setID(Id);
-                quote.setCategoryId(mCursor.getInt(mCursor.getColumnIndex
-                        (DbConstants.QUOTE_CATEGORYID)));
                 quote.setAuthorId(mCursor.getInt(mCursor
                         .getColumnIndex(DbConstants.QUOTE_AUTHORID)));
                 quote.setQuote(mCursor.getString(mCursor
@@ -266,4 +266,43 @@ public class DbAdapter {
         return quoteCount;
     }
     //endregion
+
+    //region ** QuoteCategory Table related **
+    public long insertQuoteCategory(QuoteCategory quotecategory) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put(DbConstants.QUOTECATEGORY_ROWID,
+                quotecategory.getID());
+        initialValues.put(DbConstants.QUOTECATEGORY_QUOTEID,
+                quotecategory.getQuoteID());
+        initialValues.put(DbConstants.QUOTECATEGORY_CATEGORYID,
+                quotecategory.getCategoryID());
+        return mDb.insert(DbConstants.TABLE_QUOTECATEGORY, null, initialValues);
+    }
+
+    public boolean checkQuoteCategoryExistsById(Integer Id) {
+        String SQLQuery = "SELECT * FROM " + DbConstants.TABLE_QUOTECATEGORY +
+                "" +
+                " WHERE " + DbConstants.QUOTECATEGORY_ROWID + " =?";
+        Cursor mCursor = mDb.rawQuery(SQLQuery, new String[]{Integer
+                .toString(Id)});
+        boolean exists = (mCursor.getCount() > 0);
+        mCursor.close();
+        return exists;
+    }
+
+    public boolean checkQuoteCategoryComboExists(Integer QuoteId,
+                                                 Integer CategoryId) {
+        String SQLQuery = "SELECT * FROM " + DbConstants.TABLE_QUOTECATEGORY +
+                "" +
+                " WHERE " + DbConstants.QUOTECATEGORY_QUOTEID + " =? AND " +
+                DbConstants.QUOTECATEGORY_CATEGORYID + " =?";
+        Cursor mCursor = mDb.rawQuery(SQLQuery, new String[]{Integer
+                .toString(QuoteId), Integer.toString(CategoryId)});
+        boolean exists = (mCursor.getCount() > 0);
+        mCursor.close();
+        return exists;
+    }
+
+    //endregion
+
 }

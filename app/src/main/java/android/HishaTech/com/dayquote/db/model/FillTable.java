@@ -4,6 +4,7 @@ import android.HishaTech.com.dayquote.db.DbConstants;
 import android.HishaTech.com.dayquote.db.table.table_Author;
 import android.HishaTech.com.dayquote.db.table.table_Category;
 import android.HishaTech.com.dayquote.db.table.table_Quote;
+import android.HishaTech.com.dayquote.db.table.table_QuoteCategory;
 import android.HishaTech.com.dayquote.json.JsonConstants;
 import android.HishaTech.com.dayquote.json.JsonParser;
 import android.content.Context;
@@ -99,13 +100,45 @@ public class FillTable {
                         Quote quote = new Quote();
                         quote.setID(oneObject.getInt(DbConstants
                                 .QUOTE_ROWID));
-                        quote.setCategoryId(oneObject.getInt(DbConstants
-                                .QUOTE_CATEGORYID));
                         quote.setAuthorId(oneObject.getInt(DbConstants
                                 .QUOTE_AUTHORID));
                         quote.setQuote(oneObject.getString
                                 (DbConstants.QUOTE_QUOTE));
                         table_Quote.insertQuote(context, quote);
+                    }
+                } catch (JSONException e) {
+                    // Oops
+                }
+            }
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public static boolean QuoteCategory(Context context) {
+        try {
+            JsonParser jParser = new JsonParser();
+            JSONObject jObject = jParser.getJSONFromUrl(JsonConstants
+                    .json_BaseURL + JsonConstants.json_QuoteCategoryURL);
+            JSONArray jArray = jObject.getJSONArray(DbConstants
+                    .TABLE_QUOTECATEGORY);
+            for (int i = 0; i < jArray.length(); i++) {
+                try {
+                    JSONObject oneObject = jArray.getJSONObject(i);
+                    if (!table_QuoteCategory.checkQuoteCategoryExistsById
+                            (context, oneObject
+                                            .getInt(DbConstants.QUOTECATEGORY_ROWID)
+                            )) {
+                        QuoteCategory quotecategory = new QuoteCategory();
+                        quotecategory.setID(oneObject.getInt(DbConstants
+                                .QUOTECATEGORY_ROWID));
+                        quotecategory.setQuoteID(oneObject.getInt(DbConstants
+                                .QUOTECATEGORY_QUOTEID));
+                        quotecategory.setCategoryID(oneObject.getInt
+                                (DbConstants.QUOTECATEGORY_CATEGORYID));
+                        table_QuoteCategory.insertQuoteCategory(context,
+                                quotecategory);
                     }
                 } catch (JSONException e) {
                     // Oops

@@ -15,6 +15,7 @@ public class DbConstants {
     public static final String TABLE_AUTHOR = "author";
     public static final String TABLE_CATEGORY = "category";
     public static final String TABLE_QUOTE = "quote";
+    public static final String TABLE_QUOTECATEGORY = "quotecategory";
 
     // Author table columns
     public static final String AUTHOR_ROWID = "_id";
@@ -53,7 +54,6 @@ public class DbConstants {
 
     // Quote table columns
     public static final String QUOTE_ROWID = "_id";
-    public static final String QUOTE_CATEGORYID = "categoryid";
     public static final String QUOTE_AUTHORID = "authorid";
     public static final String QUOTE_QUOTE = "quote";
 
@@ -63,11 +63,25 @@ public class DbConstants {
             + " ("
             + QUOTE_ROWID
             + " integer primary key, "
-            + QUOTE_CATEGORYID
-            + " integer not null, "
             + QUOTE_AUTHORID
             + " integer not null, "
             + QUOTE_QUOTE
             + " text not null);";
 
+    // QuoteCategory table columns
+    public static final String QUOTECATEGORY_ROWID = "_id";
+    public static final String QUOTECATEGORY_QUOTEID = "quoteid";
+    public static final String QUOTECATEGORY_CATEGORYID = "categoryid";
+
+    // QuoteCategory creation string
+    public static final String QUOTECATEGORY_TABLE_CREATE_STRING = "CREATE " +
+            "TABLE "
+            + TABLE_QUOTECATEGORY
+            + " ("
+            + QUOTECATEGORY_ROWID
+            + " integer primary key, "
+            + QUOTECATEGORY_QUOTEID
+            + " integer not null, "
+            + QUOTECATEGORY_CATEGORYID
+            + " integer not null);";
 }
