@@ -4,16 +4,14 @@ import android.HishaTech.com.dayquote.json.AsyncFillAuthor;
 import android.HishaTech.com.dayquote.json.AsyncFillCategory;
 import android.HishaTech.com.dayquote.json.AsyncFillQuote;
 import android.HishaTech.com.dayquote.json.AsyncFillQuoteCategory;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Toast;
 
 
-public class SplashActivity extends ActionBarActivity {
+public class SplashActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
