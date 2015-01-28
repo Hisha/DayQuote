@@ -1,12 +1,14 @@
-package android.HishaTech.com.dayquote;
+package com.HishaTech.android.dayquote;
 
-import android.HishaTech.com.dayquote.db.DbConstants;
-import android.HishaTech.com.dayquote.db.table.table_Quote;
-import android.HishaTech.com.dayquote.json.AsyncFillQuoteCount;
+import com.HishaTech.android.dayquote.db.DbConstants;
+import com.HishaTech.android.dayquote.db.table.table_Quote;
+import com.HishaTech.android.dayquote.json.AsyncFillQuoteCount;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.File;
@@ -50,7 +52,9 @@ public class Utils {
                     (AppConstants.pref_name, 0);
             Integer onlineQuoteCount = prefs.getInt(AppConstants.db_quotecount,
                     0);
+            
             Integer currentQuoteCount = table_Quote.getQuoteCount(context);
+
             if (currentQuoteCount < onlineQuoteCount) {
                 Toast.makeText(context, R.string.toast_quotecount_NotUpToDate,
                         Toast.LENGTH_LONG).show();

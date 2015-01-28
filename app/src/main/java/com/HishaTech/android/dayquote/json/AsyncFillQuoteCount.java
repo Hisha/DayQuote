@@ -1,6 +1,6 @@
-package android.HishaTech.com.dayquote.json;
+package com.HishaTech.android.dayquote.json;
 
-import android.HishaTech.com.dayquote.db.FillTable;
+import com.HishaTech.android.dayquote.db.FillTable;
 import android.content.Context;
 import android.os.AsyncTask;
 

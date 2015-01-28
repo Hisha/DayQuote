@@ -1,8 +1,8 @@
-package android.HishaTech.com.dayquote.db.table;
+package com.HishaTech.android.dayquote.db.table;
 
-import android.HishaTech.com.dayquote.Conversions;
-import android.HishaTech.com.dayquote.db.DbAdapter;
-import android.HishaTech.com.dayquote.db.model.Category;
+import com.HishaTech.android.dayquote.Conversions;
+import com.HishaTech.android.dayquote.db.DbAdapter;
+import com.HishaTech.android.dayquote.db.model.Category;
 import android.content.Context;
 
 /**

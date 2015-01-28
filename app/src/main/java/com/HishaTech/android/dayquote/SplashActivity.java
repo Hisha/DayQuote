@@ -1,9 +1,9 @@
-package android.HishaTech.com.dayquote;
+package com.HishaTech.android.dayquote;
 
-import android.HishaTech.com.dayquote.json.AsyncFillAuthor;
-import android.HishaTech.com.dayquote.json.AsyncFillCategory;
-import android.HishaTech.com.dayquote.json.AsyncFillQuote;
-import android.HishaTech.com.dayquote.json.AsyncFillQuoteCategory;
+import com.HishaTech.android.dayquote.json.AsyncFillAuthor;
+import com.HishaTech.android.dayquote.json.AsyncFillCategory;
+import com.HishaTech.android.dayquote.json.AsyncFillQuote;
+import com.HishaTech.android.dayquote.json.AsyncFillQuoteCategory;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;

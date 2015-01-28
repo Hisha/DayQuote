@@ -1,4 +1,4 @@
-package android.HishaTech.com.dayquote.json;
+package com.HishaTech.android.dayquote.json;
 
 /**
  * Created by smithkev on 1/27/2015.

@@ -1,8 +1,9 @@
-package android.HishaTech.com.dayquote.db.table;
+package com.HishaTech.android.dayquote.db.table;
 
-import android.HishaTech.com.dayquote.Conversions;
-import android.HishaTech.com.dayquote.db.DbAdapter;
-import android.HishaTech.com.dayquote.db.model.Quote;
+import com.HishaTech.android.dayquote.Conversions;
+import com.HishaTech.android.dayquote.db.DbAdapter;
+import com.HishaTech.android.dayquote.db.model.Quote;
+
 import android.content.Context;
 
 /**
@@ -41,6 +42,19 @@ public class table_Quote {
 
         return quoteCount;
 
+    }
+
+    public static Quote getRandomQuote(Context context, Integer CategoryId) {
+
+        Quote quote = new Quote();
+
+        DbAdapter db = new DbAdapter(context);
+
+        db.open();
+        quote = db.getRandomQuote(CategoryId);
+        db.close();
+
+        return quote;
     }
 
 }

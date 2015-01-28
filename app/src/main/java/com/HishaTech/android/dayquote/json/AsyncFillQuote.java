@@ -1,7 +1,6 @@
-package android.HishaTech.com.dayquote.json;
+package com.HishaTech.android.dayquote.json;
 
-import android.HishaTech.com.dayquote.R;
-import android.HishaTech.com.dayquote.db.FillTable;
+import com.HishaTech.android.dayquote.db.FillTable;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
@@ -24,7 +23,7 @@ public class AsyncFillQuote extends AsyncTask<Context, Void, String> {
 
     @Override
     protected void onPostExecute(String truefalse) {
-        Toast.makeText(mCtx, R.string.toast_update_quote,
+        Toast.makeText(mCtx, com.HishaTech.android.dayquote.R.string.toast_update_quote,
                 Toast.LENGTH_SHORT).show();
     }
 }

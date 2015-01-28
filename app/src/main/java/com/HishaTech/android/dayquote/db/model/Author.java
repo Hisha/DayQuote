@@ -1,4 +1,4 @@
-package android.HishaTech.com.dayquote.db.model;
+package com.HishaTech.android.dayquote.db.model;
 
 /**
  * Created by smithkev on 1/27/2015.
@@ -39,7 +39,7 @@ public class Author {
     }
 
     public void setWikiLink(String WikiLink) {
-        this.wikilink = wikilink;
+        this.wikilink = WikiLink;
     }
 
 }

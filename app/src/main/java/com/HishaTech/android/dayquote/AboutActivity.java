@@ -1,4 +1,4 @@
-package android.HishaTech.com.dayquote;
+package com.HishaTech.android.dayquote;
 
 import android.app.Activity;
 import android.os.Bundle;

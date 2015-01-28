@@ -1,8 +1,9 @@
-package android.HishaTech.com.dayquote.db.table;
+package com.HishaTech.android.dayquote.db.table;
 
-import android.HishaTech.com.dayquote.Conversions;
-import android.HishaTech.com.dayquote.db.DbAdapter;
-import android.HishaTech.com.dayquote.db.model.Author;
+import com.HishaTech.android.dayquote.Conversions;
+import com.HishaTech.android.dayquote.db.DbAdapter;
+import com.HishaTech.android.dayquote.db.model.Author;
+
 import android.content.Context;
 
 /**
@@ -29,6 +30,20 @@ public class table_Author {
                         (author));
         db.close();
         return insertFailed;
+    }
+
+    public static Author getAuthorById(Context context, Integer AuthorId) {
+
+        Author author = new Author();
+
+        DbAdapter db = new DbAdapter(context);
+
+        db.open();
+        author = db.getAuthorById(AuthorId);
+        db.close();
+
+        return author;
+
     }
 
 }

@@ -1,9 +1,10 @@
-package android.HishaTech.com.dayquote.db;
+package com.HishaTech.android.dayquote.db;
 
-import android.HishaTech.com.dayquote.db.model.Author;
-import android.HishaTech.com.dayquote.db.model.Category;
-import android.HishaTech.com.dayquote.db.model.Quote;
-import android.HishaTech.com.dayquote.db.model.QuoteCategory;
+import com.HishaTech.android.dayquote.db.model.Author;
+import com.HishaTech.android.dayquote.db.model.Category;
+import com.HishaTech.android.dayquote.db.model.Quote;
+import com.HishaTech.android.dayquote.db.model.QuoteCategory;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -264,6 +265,49 @@ public class DbAdapter {
             mCursor.close();
         }
         return quoteCount;
+    }
+
+    public Quote getRandomQuote(Integer CategoryId) {
+
+        Cursor mCursor;
+
+        if (CategoryId == 0) {
+
+            mCursor = mDb.query(DbConstants.TABLE_QUOTE,
+                    new String[]{DbConstants.QUOTE_ROWID,
+                            DbConstants.QUOTE_AUTHORID,
+                            DbConstants.QUOTE_QUOTE}, null,
+                    null, null, null, "RANDOM()", "1");
+        } else {
+
+            //TODO: needs to be replaced with category checking
+            mCursor = mDb.query(DbConstants.TABLE_QUOTE,
+                    new String[]{DbConstants.QUOTE_ROWID,
+                            DbConstants.QUOTE_AUTHORID,
+                            DbConstants.QUOTE_QUOTE}, null,
+                    null, null, null, "RANDOM()", "1");
+
+        }
+
+        Quote quote = new Quote();
+
+        if (mCursor.moveToFirst()) {
+            do {
+                quote.setID(mCursor.getInt(mCursor
+                        .getColumnIndex(DbConstants.QUOTE_ROWID)));
+                quote.setAuthorId(mCursor.getInt(mCursor
+                        .getColumnIndex(DbConstants.QUOTE_AUTHORID)));
+                quote.setQuote(mCursor.getString(mCursor
+                        .getColumnIndex(DbConstants.QUOTE_QUOTE)));
+            } while (mCursor.moveToNext());
+        }
+
+        if (mCursor != null && !mCursor.isClosed()) {
+            mCursor.close();
+        }
+
+        return quote;
+
     }
     //endregion
 

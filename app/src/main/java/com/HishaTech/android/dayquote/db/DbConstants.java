@@ -1,4 +1,4 @@
-package android.HishaTech.com.dayquote.db;
+package com.HishaTech.android.dayquote.db;
 
 /**
  * Created by smithkev on 1/27/2015.

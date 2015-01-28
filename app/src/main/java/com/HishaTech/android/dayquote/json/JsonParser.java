@@ -1,6 +1,5 @@
-package android.HishaTech.com.dayquote.json;
+package com.HishaTech.android.dayquote.json;
 
-import android.os.AsyncTask;
 import android.util.Log;
 
 import org.apache.http.HttpEntity;
