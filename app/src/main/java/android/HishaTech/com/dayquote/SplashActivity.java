@@ -1,6 +1,8 @@
 package android.HishaTech.com.dayquote;
 
+import android.HishaTech.com.dayquote.json.AsyncFillAuthor;
 import android.HishaTech.com.dayquote.json.AsyncFillCategory;
+import android.HishaTech.com.dayquote.json.AsyncFillQuote;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
@@ -25,8 +27,12 @@ public class SplashActivity extends ActionBarActivity {
                 finish();
             } else {
 
+                AsyncFillAuthor afa = new AsyncFillAuthor(this);
+                afa.execute();
                 AsyncFillCategory afc = new AsyncFillCategory(this);
                 afc.execute();
+                AsyncFillQuote afq = new AsyncFillQuote(this);
+                afq.execute();
 
                 int myTimer = 1000;
                 new Handler().postDelayed(new Runnable() {

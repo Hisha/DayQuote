@@ -18,6 +18,22 @@ public class DbConstants {
 
     // Author table columns
     public static final String AUTHOR_ROWID = "_id";
+    public static final String AUTHOR_FIRSTNAME = "firstname";
+    public static final String AUTHOR_LASTNAME = "lastname";
+    public static final String AUTHOR_WIKILINK = "wikilink";
+
+    // Author table creation string
+    public static final String AUTHOR_TABLE_CREATE_STRING = "CREATE TABLE "
+            + TABLE_AUTHOR
+            + " ("
+            + AUTHOR_ROWID
+            + " integer primary key, "
+            + AUTHOR_FIRSTNAME
+            + " text not null, "
+            + AUTHOR_LASTNAME
+            + " text not null, "
+            + AUTHOR_WIKILINK
+            + " text not null);";
 
     // Category table columns
     public static final String CATEGORY_ROWID = "_id";
@@ -37,5 +53,21 @@ public class DbConstants {
 
     // Quote table columns
     public static final String QUOTE_ROWID = "_id";
+    public static final String QUOTE_CATEGORYID = "categoryid";
+    public static final String QUOTE_AUTHORID = "authorid";
+    public static final String QUOTE_QUOTE = "quote";
+
+    // Quote table creation string
+    public static final String QUOTE_TABLE_CREATE_STRING = "CREATE TABLE "
+            + TABLE_QUOTE
+            + " ("
+            + QUOTE_ROWID
+            + " integer primary key, "
+            + QUOTE_CATEGORYID
+            + " integer not null, "
+            + QUOTE_AUTHORID
+            + " integer not null, "
+            + QUOTE_QUOTE
+            + " text not null);";
 
 }

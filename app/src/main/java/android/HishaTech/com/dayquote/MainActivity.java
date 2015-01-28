@@ -1,6 +1,8 @@
 package android.HishaTech.com.dayquote;
 
+import android.HishaTech.com.dayquote.json.AsyncFillAuthor;
 import android.HishaTech.com.dayquote.json.AsyncFillCategory;
+import android.HishaTech.com.dayquote.json.AsyncFillQuote;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -28,18 +30,24 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+
             case R.id.About:
                 Intent Aboutintent = new Intent(this, AboutActivity.class);
                 this.startActivity(Aboutintent);
                 break;
+
             case R.id.UpdateDb:
                 if (!Utils.InternetUp(this)) {
                     Toast.makeText(this, R.string.toast_updateDb,
                             Toast.LENGTH_LONG).show();
                 } else {
 
+                    AsyncFillAuthor afa = new AsyncFillAuthor(this);
+                    afa.execute();
                     AsyncFillCategory afc = new AsyncFillCategory(this);
                     afc.execute();
+                    AsyncFillQuote afq = new AsyncFillQuote(this);
+                    afq.execute();
 
                 }
                 break;

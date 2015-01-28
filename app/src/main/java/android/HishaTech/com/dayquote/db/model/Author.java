@@ -6,6 +6,9 @@ package android.HishaTech.com.dayquote.db.model;
 public class Author {
 
     private Integer id;
+    private String firstname;
+    private String lastname;
+    private String wikilink;
 
     public Integer getID() {
         return id;
@@ -13,6 +16,30 @@ public class Author {
 
     public void setID(Integer ID) {
         this.id = ID;
+    }
+
+    public String getFirstName() {
+        return firstname;
+    }
+
+    public void setFirstName(String FirstName) {
+        this.firstname = FirstName;
+    }
+
+    public String getLastName() {
+        return lastname;
+    }
+
+    public void setLastName(String LastName) {
+        this.lastname = LastName;
+    }
+
+    public String getWikiLink() {
+        return wikilink;
+    }
+
+    public void setWikiLink(String WikiLink) {
+        this.wikilink = wikilink;
     }
 
 }
